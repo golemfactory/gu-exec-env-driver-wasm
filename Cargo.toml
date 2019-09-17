@@ -26,3 +26,12 @@ git="https://github.com/golemfactory/golem-unlimited.git"
 branch="feature/wasm"
 default-features=false
 
+[package.metadata.deb]
+depends = "$auto, gu-provider"
+assets = [
+    ["target/release/gu-exec-env-driver-wasm", "usr/lib/golemu/plugins/WasmExecEnv.gu-plugin/", "755"],
+    ["gu-plugin.json", "usr/lib/golemu/plugins/WasmExecEnv.gu-plugin/", "644"],
+]
+
+maintainer-scripts = "deb"
+
