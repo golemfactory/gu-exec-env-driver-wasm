@@ -1,4 +1,4 @@
-use crate::manifest::{Manifest, MountPoint, EntryPoint};
+use gu_wasm_env_api::{Manifest, MountPoint, EntryPoint};
 use crate::Opt::ResolvePath;
 use crate::ResolveResult::ResolvedPath;
 use failure::{err_msg, Fallible, bail};
@@ -10,8 +10,6 @@ use structopt::StructOpt;
 use sp_wasm_engine::sandbox::load::Bytes;
 use sp_wasm_engine::sandbox::Sandbox;
 use sp_wasm_engine::prelude::NodeMode;
-
-mod manifest;
 
 #[derive(StructOpt)]
 #[structopt(rename_all = "kebab-case")]
@@ -93,7 +91,7 @@ impl ValidateImage {
         let mut a = zip::ZipArchive::new(OpenOptions::new().read(true).open(self.image_path)?)?;
 
         let entry = a.by_name("gu-package.json")?;
-        let m: manifest::Manifest = serde_json::from_reader(entry)?;
+        let m: gu_wasm_env_api::Manifest = serde_json::from_reader(entry)?;
 
         eprintln!("m={:?}", m);
 
