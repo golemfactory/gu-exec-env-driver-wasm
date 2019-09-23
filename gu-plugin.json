@@ -1,0 +1,9 @@
+{
+	"id": "b3c0073e-d940-11e9-bc1b-ef182143aa11",
+	"version": "0.1.0",
+	"creator": ["Golem Factory"],
+	"provider": {
+		"min-version": "0.2.2",
+		"simple-exec-env": [{"code": "wasm", "exec": "gu-exec-env-driver-wasm"}]
+	}
+}
