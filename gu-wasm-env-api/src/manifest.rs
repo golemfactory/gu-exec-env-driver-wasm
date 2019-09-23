@@ -7,13 +7,17 @@ pub struct Manifest {
     pub id: String,
     pub name: String,
     #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub main: Option<EntryPoint>,
     #[serde(default)]
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub entry_points: Vec<EntryPoint>,
     pub runtime: RuntimeType,
     #[serde(default)]
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub mount_points: Vec<MountPoint>,
     #[serde(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub work_dir: Option<String>,
 }
 
